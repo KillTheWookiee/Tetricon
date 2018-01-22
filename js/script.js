@@ -28,13 +28,21 @@ $(document).ready(function() {
         }
         $("#gamePreviewMap").html(html);
     }
+<<<<<<< HEAD
     Game.next = 0; //przechowuje podglad nastepnego klocka
+=======
+    Game.next = 0; //Store preview block
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
     Game.Board = function() {
         this.cells = [];
         for(var row = 0; row < Game.row; row++) {
             var rowObject = [];
             for(var column = 0; column < Game.column; column++) {
+<<<<<<< HEAD
                 rowObject[column] = Game.EMPTY;
+=======
+                rowObject[column] = Game.EMPTY; // 0 mean empty cell, 1 mean cell occupy a block
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
             }
             this.cells[row] = rowObject;
         }
@@ -72,13 +80,22 @@ $(document).ready(function() {
     Game.gameBoard = new Game.Board();
     Game.Block = function() {
         this.currentRow = 0;
+<<<<<<< HEAD
         this.currentColumn = 8;
+=======
+        this.currentColumn = 8; //To start at the middle
+        //block is a two dimensional mtatrix of 4*4
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
         this.blockCells = [];
         this.init = function() {
             for(var row = 0; row < 3; row++) {
                 var rowObject = [];
                 for(var column = 0; column < 3; column++) {
+<<<<<<< HEAD
                     rowObject[column] = 0; // 0 to pusta komorka
+=======
+                    rowObject[column] = 0; // 0 mean empty cell, 1 mean cell occupy a block
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
                 }
                 this.blockCells[row] = rowObject;
             }
@@ -154,7 +171,10 @@ $(document).ready(function() {
             }
             console.log("Show preview");
         };
+<<<<<<< HEAD
         //tutaj definicja klockow, na zasadzie macierzy 3x3
+=======
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
         this.getShape1 = function() {
             var blockCells = [
                 [1, 1, 1],
@@ -226,10 +246,17 @@ $(document).ready(function() {
             }
         };
         /*
+<<<<<<< HEAD
          * ta metoda sluzy generowaniu bloku
          */
         this.drawBlock = function() {
             //punkt (x ,y) są współrzędnymi rogu komórki
+=======
+         * This method draw the block in the game board
+         */
+        this.drawBlock = function() {
+            //current x ,current y is the first corner of block cell[0,0]
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
             for(var r = 0; r < 3; r++) {
                 for(var c = 0; c < 3; c++) {
                     //console.log("r "+r+" c "+c + " "+ this.blockCells[r][c]);
@@ -254,12 +281,21 @@ $(document).ready(function() {
                     newBlock[c][r] = this.blockCells[r][2 - c];
                 }
             }
+<<<<<<< HEAD
             // testowalem tym czy wszystko sie obraca jak trzeba
+=======
+            // Temporarily rotate the block
+            // used game board to check if it is ok to rotate;
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
             //Game.gameBoard.cells[]
             var ok = true;
             for(var r = 0; r < 3; r++) {
                 for(var c = 0; c < 3; c++) {
                     if(newBlock[r][c] == Game.FULL) {
+<<<<<<< HEAD
+=======
+                        // Then game board must be empty
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
                         var y = this.currentRow + r;
                         var x = this.currentColumn + c;
                         if(Game.gameBoard.cells[y][x] != Game.EMPTY) {
@@ -276,8 +312,13 @@ $(document).ready(function() {
             }
             this.clearOldDrawing();
             /*
+<<<<<<< HEAD
             	tutaj zastosowałem transponowanie macierzy
               do obracania bloków
+=======
+            	Mathmatically rotate
+            	change row to columns
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
             */
             var newBlock = [];
             for(var r = 0; r < 3; r++) {
@@ -295,6 +336,10 @@ $(document).ready(function() {
             this.drawBlock();
         };
         this.clearOldDrawing = function() {
+<<<<<<< HEAD
+=======
+            //current x ,current y is the first corner of block cell[0,0]
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
             for(var r = 0; r < 3; r++) {
                 for(var c = 0; c < 3; c++) {
                     //console.log("r "+r+" c "+c + " "+ this.blockCells[r][c]);
@@ -310,10 +355,18 @@ $(document).ready(function() {
             var ok = true;
             for(var r = 0; r < 3; r++) {
                 for(var c = 0; c < 3; c++) {
+<<<<<<< HEAD
                     if(this.blockCells[r][c] == Game.FULL) {
                         var y = this.currentRow + r + 1;
                         var x = this.currentColumn + c;
                         if(y >= Game.row) //ostatni wiersz, po osiagnieciu konca zwroci 'false'
+=======
+                    // Then game board must be empty
+                    if(this.blockCells[r][c] == Game.FULL) {
+                        var y = this.currentRow + r + 1;
+                        var x = this.currentColumn + c;
+                        if(y >= Game.row) //last row, reach the end stop and return false ,cannot move further down
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
                         {
                             return false;
                         }
@@ -327,10 +380,18 @@ $(document).ready(function() {
         };
         this.moveDown = function() {
             if(this.isSafeToMoveDown()) {
+<<<<<<< HEAD
                 this.clearOldDrawing();
                 this.currentRow++;
                 this.drawBlock();
             } else
+=======
+                //Move down
+                this.clearOldDrawing();
+                this.currentRow++;
+                this.drawBlock();
+            } else // Set the game board cell
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
             {
                 this.storeGameBoardData();
                 this.processGameRow();
@@ -345,7 +406,11 @@ $(document).ready(function() {
                     var x = this.currentColumn + c;
                     if(this.blockCells[r][c] == Game.FULL) {
                         Game.gameBoard.cells[y][x] = Game.FULL;
+<<<<<<< HEAD
                         console.log("Ustaw wiersz " + y + " kolumne " + x + " na 1");
+=======
+                        console.log("Set row " + y + " column " + x + " to 1");
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
                     }
                 }
             }
@@ -358,18 +423,31 @@ $(document).ready(function() {
                     ok = ok && Game.gameBoard.cells[last][col] == Game.FULL;
                 }
                 if(ok) {
+<<<<<<< HEAD
                     console.log("Sprawdzanie wiersza " + last + " pełny " + ok);
+=======
+                    console.log("Checking row " + last + " full " + ok);
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
                     rowIndexToRemove.unshift(last);
                 }
             }
             for(var lastIndex = 0; lastIndex < rowIndexToRemove.length; lastIndex++) {
                 var rowIndex = rowIndexToRemove[lastIndex];
                 var animateRow = rowIndex;
+<<<<<<< HEAD
                 console.log("Zmiana wiersza w dół " + rowIndex);
                 for(var c = 0; c < Game.column; c++) {
                     Game.gameBoard.cells[rowIndex][c] = Game.gameBoard.cells[rowIndex - 1][c];
                 }
                 console.log("Gratulacje! :)");
+=======
+                console.log("Shifting down row " + rowIndex);
+                for(var c = 0; c < Game.column; c++) {
+                    console.log("remove row " + rowIndex + " column " + c + " with row " + (rowIndex - 1) + " column " + c);
+                    Game.gameBoard.cells[rowIndex][c] = Game.gameBoard.cells[rowIndex - 1][c];
+                }
+                console.log("Congrulation");
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
                 rowIndex--;
                 while(rowIndex > 0) {
                     for(var c = 0; c < Game.column; c++) {
@@ -458,7 +536,11 @@ $(document).ready(function() {
             Game.current = new Game.Block();
             Game.current.init();
         } else {
+<<<<<<< HEAD
             alert("Koniec gry! Odśwież stronę aby zagrać jeszcze raz!");
+=======
+            alert("Game over, please refresh the page to start new game");
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
             clearInterval(timer);
         }
     }, 1000);
@@ -486,12 +568,20 @@ $(document).ready(function() {
                     Game.current = new Game.Block();
                     Game.current.init();
                 } else {
+<<<<<<< HEAD
                     alert("Koniec gry! Odśwież stronę aby zagrać jeszcze raz!");
+=======
+                    alert("Game over, please refresh the page to start new game");
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
                     clearInterval(timer);
                 }
             }
         } catch(e) {
+<<<<<<< HEAD
             alert("Koniec gry! Odśwież stronę aby zagrać jeszcze raz!");
+=======
+            alert("Game is over,Please refresh to start new game ");
+>>>>>>> d85257abf74278a33c4b821499d4a44c0a959aa9
         }
     });
 });
