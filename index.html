@@ -4,22 +4,67 @@
   <meta charset="utf-8">
   <title>Tetricon</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style2.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="base/jquery-ui.min.css" rel="stylesheet">
+  <script src="jquery-ui.min.js"></script>
+  <script src="wb.rotate.min.js"></script>
+  <script src="wwb12.min.js"></script>
+
+
+
+  <script>
+  $(document).ready(function()
+  {
+     var jQueryTabs1Options =
+     {
+        show: false,
+        event: 'click',
+        collapsible: false
+     };
+     $("#jQueryTabs1").tabs(jQueryTabs1Options);
+  });
+  </script>
+
 
 </head>
 <body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
   <script src="js/script.js"></script>
-  <div id="gameScore">
-    <b>Score: </b><span id="score"> 0 </span>
-  </div>
-  <div class="pMap">
-    <table id="gamePreviewMap" class="pMap_borders">
-    </table>
-  </div>
 
-  <table id='gameMap' class="gMap_borders">
-
+  <div id="container">
+  <div id="jQueryTabs1">
+  <ul>
+    <li><a href="#jquerytabs1-page-0"><span>Tetris!</span></a></li>
+    <li><a href="#jquerytabs1-page-1"><span>O projekcie</span></a></li>
+  </ul>
+  <div style="height:647px;" id="jquerytabs1-page-0">
+      <div id="gameScore">
+        <b>Score: </b><span id="score"> 0 </span>
+      </div>
+      <!--<div class="pMap">
+        <table id="gamePreviewMap" class="pMap_borders">
+        </table>
+      </div>
+    </br></br>-->
+      <table id='gameMap' class="gMap_borders">
   </table>
+</div>
+<div style="height:647px;" id="jquerytabs1-page-1">
+  <div id="wb_Text1">
+    <span style="color:#000000;font-family:Arial;font-size:13px;">Wykonanie: KillTheWookiee<br><br>Przy generowaniu html wspomogłem się aplikacją WYSIWYG<br><br>Dodatkowe formatowanie jQuery/js: <br><a href="http://jsbeautifier.org/"> jsBeautifier</a></span></div>
+  </div>
+</div>
+<div id="Banner1"><span>T&#8721;tric0n</span></div>
+</div>
+<div id="PageHeader1" style="position:fixed;text-align:left;left:0;top:0;right:0;height:99px;z-index:7777;" class="Heading 1 <h1>">
+
+
+
+  <div id="wb_Text1" style="position:absolute;left:223px;top:31px;width:570px;height:16px;text-align:center;z-index:0;" onmouseover="Animate('wb_Text1', '', '', '', '', '', 500, '');return false;">
+  &nbsp;</div>
+</div>
 
 
 
