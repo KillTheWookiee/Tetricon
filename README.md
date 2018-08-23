@@ -1,1 +1,1 @@
-# tetris-js
+# tetricon
